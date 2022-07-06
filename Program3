@@ -1,0 +1,36 @@
+
+import java.io.*;
+import java.util.Scanner;
+import java.time.*;
+
+public class Program3 {
+
+    public static void main(String[] args) throws IOException {
+
+        File file = new File("C:\\Users\\Alejandro\\Desktop\\sampleData.txt");
+        Scanner inFile = new Scanner(file); 
+
+        int n = 1;
+
+        while (inFile.hasNext()) { // Scan through the code 
+
+            String user = inFile.nextLine(); // read the line
+            String arr[] = user.split(".");
+
+            int mon = Integer.parseInt(arr[0]); // get month
+            int day = Integer.parseInt(arr[1]); // get day 
+            int year = Integer.parseInt(arr[2]); // get year
+
+            LocalDate today = LocalDate.now(); // add todday's day
+            LocalDate birthDay = LocalDate.of(year, mon, day); // Local date
+
+            Period age = Period.between(birthDay, today); // calculate the age
+
+            System.out.println("Age of the " + n + "th person is : " + age.getYears()
+                    + "years, " + age.getMonths() + " months, " + age.getDays() + " days.");
+
+        }
+        inFile.close();
+    }
+
+}
