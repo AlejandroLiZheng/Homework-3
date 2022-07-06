@@ -1,0 +1,71 @@
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Program1 {
+
+    public static void main(String[] args) throws IOException {
+
+        int num; 
+        long result;
+
+        String inFile = "sample.txt"; // input file name 
+        String outFile = "Result.txt" // output file name
+                
+        Scanner inputFile = new Scanner(new File(inFile));
+        PrintWriter outputFile = new PrintWriter(outFile);
+
+        while (sc.hasNextInt()) {
+            num = sc.nextInt();
+
+            result = factorial(num);
+            System.out.println("Factorial of " + num + " is " + result + "\r\n");
+
+            result = sumOfSquares(num);
+
+            System.out.println("Series sum of " + num + " is " + result + "\r\n");
+
+            int[] fib = fibonacci(num);
+
+            System.out.println("Fibonacci series for first " + num + " terms:\r\n");
+
+        }
+        inputFile.close();
+        outputFile.close();
+    }
+
+    // factorial method
+    public static long factorial(num) {
+        long fact = 1;
+        for (int x = 2; x <= num; x++) {
+            fact = fact * x;
+        }
+        return fact;
+    }
+
+    // Sum square method
+    public static long sumOfSquares(int num) {
+        long sum = 0;
+        for (int x = 1; x <= num; x++) {
+            sum += (long) x * x;
+        }
+        return sum;
+    }
+
+    // Fibonacci Method
+    public static int[] fibonacci(int num) {
+        int[] fib = new int[num];
+        if (num == 1) {
+            fib[0] = 1;
+        } else if (num == 2) {
+            fib[0] = 1;
+            fib[1] = 2;
+        } else {
+            fib[0] = 1;
+            fib[1] = 2;
+            for (int i = 2; i < num; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+
+            }
+            return fib;
+        }
